@@ -85,7 +85,7 @@ function getTeamsById() {
                                 </div>
                                 <div class="card-stacked">
                                     <div class="card-content">
-                                        <h5><i class="material-icons">contacts</i> More Info</h5>
+                                    <h5> ${data.name}</h5>
                                         <div>
                                             <ul>
                                                 <li>Alamat: ${data.address}</li>
@@ -95,7 +95,7 @@ function getTeamsById() {
                                             </ul>
                                         </div>
     
-                                        <a class="btn-floating pulse" href="./ListPlayers.html?id=${data.id}"><i class="material-icons">supervised_user_circle</i></a>
+                                        <a class="btn-floating pulse" href="./ListPlayers.html?id=${data.id}">Info Pemain</a>  
                                     </div>
                                 </div>
                             </div>
