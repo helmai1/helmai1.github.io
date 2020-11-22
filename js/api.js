@@ -286,7 +286,7 @@ function getSavedFavById() {
                 </div>
                 <div class="card-stacked">
                     <div class="card-content">
-                        <h5><i class="material-icons">contacts</i> More Info</h5>
+                    <h5> ${data.name}</h5>
                         <div>
                             <ul>
                                 <li>Alamat: ${team.address}</li>
