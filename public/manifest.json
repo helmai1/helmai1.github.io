@@ -1,0 +1,18 @@
+{
+  "name": "Info Bola",
+  "gcm_sender_id": "147052519199",
+  "short_name": "Info Bola",
+  "description": "Informasi tentang Sepak Bola",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#00897B",
+  "theme_color": "#00897B",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "626x626",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
