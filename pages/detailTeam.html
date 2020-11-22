@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/materialize.min.css" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#cdc9c3" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="/css/iconLoad.css" />
+    <title>Info Bola | Team</title>
+  </head>
+  <body>
+    <nav class="teal lighten-1" role="navigation">
+      <div class="nav-wrapper container">
+        <a href="#" class="brand-logo" id="logo-container">Team</a>
+        <a href="/index.html#teams" class="sidenav-trigger" data-target="nav-mobile">
+          <i class="material-icons">arrow_back</i>
+        </a>
+        <a href="/index.html#teams" class="brand-logo right show-on-large">
+          <i class="material-icons hide-on-med-and-down" data-target="nav-dk">arrow_back</i>
+        </a>
+
+        <ul class="sidenav" id="nav-dk"></ul>
+        <ul class="topnav right hide-on-med-and-down"></ul>
+        <ul class="sidenav" id="nav-mobile"></ul>
+      </div>
+    </nav>
+
+    <div id="load"></div>
+    <div class="container" id="detailTeams"></div>
+
+    <div class="fixed-action-btn">
+      <a class="btn-floating btn-large red" id="save">
+        <i class="large material-icons">save</i>
+      </a>
+    </div>
+
+    <script src="/js/materialize.min.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/idb.js"></script>
+    <script src="/js/db.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        let urlParams = new URLSearchParams(window.location.search);
+        let isFromSaved = urlParams.get('saved');
+        const btnSave = document.getElementById('save');
+
+        if (isFromSaved) {
+          btnSave.style.display = 'none';
+          getSavedFav();
+        } else {
+          var item = getTeamsById();
+        }
+
+        btnSave.onclick = function () {
+          console.log('FAB is tab');
+
+          item.then(function (team) {
+            saveForLater(team);
+          });
+        };
+        const idTeam = urlParams.get('id');
+      });
+    </script>
+    <script>
+      // REGISTER SERVICE WORKER
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker
+            .register('/service-worker.js')
+            .then(function () {
+              console.log('Pendaftaran ServiceWorker berhasil');
+            })
+            .catch(function () {
+              console.log('Pendaftaran ServiceWorker gagal');
+            });
+        });
+      } else {
+        console.log('ServiceWorker belum didukung browser ini.');
+      }
+
+      // REQUEST API UNTUK PERTAMA KALI
+    </script>
+    <script>
+      document.onreadystatechange = function () {
+        const state = document.readyState;
+        if (state === 'interactive') {
+          document.getElementById('detailTeams').style.visibility = 'hidden';
+        } else if (state === 'complete') {
+          setTimeout(function () {
+            document.getElementById('interactive');
+            document.getElementById('load').style.visibility = 'hidden';
+            document.getElementById('detailTeams').style.visibility = 'visible';
+          }, 1000);
+        }
+      };
+    </script>
+  </body>
+</html>

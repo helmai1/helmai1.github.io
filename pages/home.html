@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <title>Info Bola</title>
+    <style>
+      body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+      }
+      main {
+        flex: 1 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="col s12 m7">
+      <h2 class="header">Info Bola</h2>
+      <div class="card horizontal">
+        <div class="card-image">
+          <img src="/img/bola.jpg" />
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <h4>Selamat Datang di Web Info Bola!</h4>
+            <p>
+              Berita Terkini Seputar Dunia Bola, Info Pemain, Info Team dan Hasil pertandingan,<br />
+              Klik lonceng dibawah untuk mendapatkan notifikasi
+            </p>
+            <a onclick="showNotifikasiActions()" class="btn-floating btn-large waves-effect waves-light red"
+              ><i class="material-icons">notifications</i></a
+            >
+            <!-- <button > <i class="material-icons">notifications</i></button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // REGISTER SERVICE WORKER
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker
+            .register('/service-worker.js')
+            .then(function () {
+              console.log('Pendaftaran ServiceWorker berhasil');
+            })
+            .catch(function () {
+              console.log('Pendaftaran ServiceWorker gagal');
+            });
+        });
+      } else {
+        console.log('ServiceWorker belum didukung browser ini.');
+      }
+
+      // REQUEST API UNTUK PERTAMA KALI
+    </script>
+  </body>
+</html>
